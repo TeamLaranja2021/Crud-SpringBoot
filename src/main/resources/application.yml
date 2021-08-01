@@ -1,1 +1,10 @@
-
+spring:
+  datasource:
+    url: url-sistemaDocumentacao-banco
+    username: user-do-banco
+    password: password-do-banco
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update

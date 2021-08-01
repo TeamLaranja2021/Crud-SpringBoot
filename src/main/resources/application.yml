@@ -1,8 +1,9 @@
 spring:
   datasource:
-    url: url-sistemaDocumentacao-banco
-    username: user-do-banco
-    password: password-do-banco
+    url: jdbc:mysql://127.0.0.1:3306/sistemaDocumentacao
+    username: root
+    password: root
+    Driver: com.mysql.jdbc.Driver
   jpa:
     show-sql: true
     generate-ddl: true

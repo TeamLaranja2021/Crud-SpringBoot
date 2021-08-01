@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Projeto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_projeto;
+    private Integer id_projeto;
     private String nome;
     private  boolean situacao;
 }

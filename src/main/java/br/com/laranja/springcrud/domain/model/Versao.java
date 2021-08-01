@@ -11,9 +11,10 @@ import java.time.LocalDate;
 public class Versao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_versao;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Projeto projeto;
+    private Integer id_versao;
+    @ManyToOne
+    @JoinColumn(name = "id_projeto")
+    private Projeto id_projeto;
     private String gmud;
     private String descricao;
     private LocalDate data_lancamento;

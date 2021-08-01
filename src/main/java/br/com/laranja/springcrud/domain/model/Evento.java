@@ -11,13 +11,13 @@ import javax.persistence.*;
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_evento;
+    private Integer id_evento;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private TipoEvento tipoEvento;
+    private TipoEvento id_tipoEvento;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Tela tela;
+    private Tela idtela;
     private boolean situacao;
     private int ordem;
     private String parametros;

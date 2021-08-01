@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class TipoEvento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_tipo_evento;
+    private Integer id_tipoevento;
     private String nome;
     private boolean situacao;
 

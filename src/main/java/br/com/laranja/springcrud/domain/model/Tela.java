@@ -12,9 +12,9 @@ import java.time.LocalDate;
 public class Tela {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idTela;
+    private Integer idTela;
     @ManyToOne(fetch = FetchType.EAGER)
-    private Versao versao ;
+    private Versao id_versao ;
     private LocalDate dataCadastro;
     private String nomeTela;
     private String imagem;

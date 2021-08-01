@@ -11,10 +11,10 @@ import javax.persistence.*;
 public class Requisicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_requisicao;
+    private Integer id_requisicao;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Evento evento;
+    private Evento id_evento;
 
     private String url_homolog;
     private String uri_prod;

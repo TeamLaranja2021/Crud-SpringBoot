@@ -10,9 +10,9 @@ import javax.persistence.*;
 public class Propriedade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idPropriedade;
+    private Integer id_Propriedade;
     @ManyToOne(fetch = FetchType.LAZY)
-    private Requisicao idRequisicao;
+    private Requisicao id_Requisicao;
     private String chave;
     private String valor;
     private int ordem;

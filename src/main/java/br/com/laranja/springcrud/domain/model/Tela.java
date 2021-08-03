@@ -2,18 +2,21 @@ package br.com.laranja.springcrud.domain.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Table(name = "tela")
+
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Tela {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTela;
+    private Long id_tela;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Versao versao ;

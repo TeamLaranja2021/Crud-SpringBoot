@@ -2,16 +2,19 @@ package br.com.laranja.springcrud.domain.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Table(name = "tipo_evento")
+
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class TipoEvento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_tipoevento;
+    private Long id_tipoEvento;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Evento evento;

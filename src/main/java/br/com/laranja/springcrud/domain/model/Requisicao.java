@@ -1,10 +1,14 @@
 package br.com.laranja.springcrud.domain.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
-@Table(name = "requisicao")
+
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Requisicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

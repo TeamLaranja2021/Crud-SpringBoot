@@ -2,14 +2,16 @@ package br.com.laranja.springcrud.domain.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Table(name = "evento")
+
+
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
-
+@NoArgsConstructor
+@AllArgsConstructor
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

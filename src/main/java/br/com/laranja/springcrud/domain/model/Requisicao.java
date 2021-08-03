@@ -1,8 +1,5 @@
 package br.com.laranja.springcrud.domain.model;
-
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 
 @Table(name = "requisicao")
@@ -11,17 +8,17 @@ import javax.persistence.*;
 public class Requisicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_requisicao;
+    private Long id_requisicao;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Evento id_evento;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Evento evento;
 
     private String url_homolog;
     private String uri_prod;
     private String descricao;
-    private int requisicao_pai;
+    private Integer requisicao_pai;
     private String camada;
     private boolean situacao;
-    private int  ordem;
+    private Integer  ordem;
 
 }

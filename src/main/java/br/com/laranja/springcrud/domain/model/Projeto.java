@@ -10,7 +10,11 @@ import javax.persistence.*;
 public class Projeto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_projeto;
+    private Long id_projeto;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Versao versao;
+
     private String nome;
     private  boolean situacao;
 }

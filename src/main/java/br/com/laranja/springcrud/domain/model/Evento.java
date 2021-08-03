@@ -4,21 +4,24 @@ package br.com.laranja.springcrud.domain.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "evento")
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
+
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_evento;
+    private Long id_evento;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private TipoEvento id_tipoEvento;
+    private TipoEvento tipoEvento;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Tela idtela;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Tela tela;
+
     private boolean situacao;
-    private int ordem;
+    private Integer ordem;
     private String parametros;
 }

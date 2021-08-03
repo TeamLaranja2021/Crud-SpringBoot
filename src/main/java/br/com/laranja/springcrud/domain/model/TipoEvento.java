@@ -11,7 +11,11 @@ import javax.persistence.*;
 public class TipoEvento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_tipoevento;
+    private Long id_tipoevento;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Evento evento;
+
     private String nome;
     private boolean situacao;
 

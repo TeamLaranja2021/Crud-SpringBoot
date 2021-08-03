@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Table(name = "tela")
 @Entity
@@ -12,16 +13,22 @@ import java.time.LocalDate;
 public class Tela {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idTela;
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Versao id_versao ;
+    private Long idTela;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Versao versao ;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tela")
+    private  List<Evento> evento;
+
+
     private LocalDate dataCadastro;
     private String nomeTela;
     private String imagem;
     private boolean situacao;
-    private int telaPai;
-    private int ordem;
+    private Integer telaPai;
+    private Integer ordem;
     private String urlLog;
-    private int versaoOrigem;
+    private Integer versaoOrigem;
 
 }

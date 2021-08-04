@@ -18,7 +18,6 @@ public class Projeto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_projeto;
-
     private String nome;
     private  boolean situacao;
 }

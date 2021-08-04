@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Propriedade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_propriedade;
+    private Long idPropriedade;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Requisicao requisicao;

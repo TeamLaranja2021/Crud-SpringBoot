@@ -19,7 +19,7 @@ import java.util.List;
 public class Versao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_versao;
+    private Long idVersao;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "versao")
     private List<Tela> tela;

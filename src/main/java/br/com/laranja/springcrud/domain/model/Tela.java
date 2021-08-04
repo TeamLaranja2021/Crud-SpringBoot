@@ -20,7 +20,7 @@ import java.util.List;
 public class Tela {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_tela;
+    private Long idTela;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Versao versao ;

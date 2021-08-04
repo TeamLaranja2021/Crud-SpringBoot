@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_evento;
+    private Long idEvento;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private TipoEvento tipoEvento;

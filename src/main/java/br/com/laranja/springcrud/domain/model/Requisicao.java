@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Requisicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_requisicao;
+    private Long idRequisicao;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Evento evento;

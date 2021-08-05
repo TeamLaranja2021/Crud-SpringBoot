@@ -55,6 +55,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         if(!usuarioOptional.isPresent()){
             throw  new UsuarioNotFoundException(idUsuario);
         }
+
         Usuario usuarioExistent = usuarioOptional.get();
         return  usuarioRepository.save(usuario.builder()
                 .idUsuario(usuarioExistent.getIdUsuario()) // vai verificar se o id ja existe

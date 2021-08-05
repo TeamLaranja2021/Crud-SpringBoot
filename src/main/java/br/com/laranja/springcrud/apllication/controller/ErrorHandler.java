@@ -1,6 +1,7 @@
 package br.com.laranja.springcrud.apllication.controller;
 
 
+import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.UsuarioNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,14 @@ public class ErrorHandler {
     public ResponseEntity<String> usuarioNotFound(UsuarioNotFoundException e){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
+
+
+    //Error do usuario
+    @ExceptionHandler(ProjetoNotFoundException.class)
+    public ResponseEntity<String> projetoNotFound(ProjetoNotFoundException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
 
 
 }

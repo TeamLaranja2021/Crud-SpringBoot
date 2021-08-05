@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -20,4 +21,7 @@ public class Projeto {
     private Long idProjeto;
     private String nome;
     private  boolean situacao;
+
+    @OneToMany(mappedBy = "projeto")
+    private List<Versao> versoes;
 }

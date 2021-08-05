@@ -30,10 +30,10 @@ public class Versao {
 
     private String gmud;
     private String descricao;
-    private LocalDate data_lancamento;
+    private LocalDate dataLancamento;
     private boolean situacao;
     private Integer ordem;
-    private String numero_versao;
+    private String numeroVersao;
 
 
 }

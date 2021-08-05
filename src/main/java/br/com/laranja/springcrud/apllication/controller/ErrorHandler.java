@@ -12,8 +12,10 @@ public class ErrorHandler {
 
     //Error do usuario
     @ExceptionHandler(UsuarioNotFoundException.class)
-    public ResponseEntity<String> sistemaNotFound(UsuarioNotFoundException e){
+    public ResponseEntity<String> usuarioNotFound(UsuarioNotFoundException e){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
+
+
 }
 

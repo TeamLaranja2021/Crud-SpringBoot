@@ -23,7 +23,7 @@ public class Usuario {
     private Long idUsuario;
     private String nome;
     private String email;
-    private Integer senha;
+    private String senha;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 }

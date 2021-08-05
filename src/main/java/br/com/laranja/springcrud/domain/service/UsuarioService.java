@@ -12,4 +12,6 @@ public interface UsuarioService {
     void deleteUserByName(String nome); // deletar usuario pelo id
 
     Usuario saveUser(Usuario usuario); // Criar Usaurio
+
+    Usuario updateUserById(Long idUsuario ,Usuario usuario); // atualizar os dados dos usuario
 }

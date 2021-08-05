@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -42,6 +43,28 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuario.setUpdatedDate(LocalDateTime.now());
 
         return  usuarioRepository.save(usuario);
+    }
+
+
+    //AtuAlizar Usuario
+    @Override
+    public Usuario updateUserById(Long idUsuario, Usuario usuario) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(idUsuario);
+
+        //verifica se tem o id no banco
+        if(!usuarioOptional.isPresent()){
+            throw  new UsuarioNotFoundException(idUsuario);
+        }
+        Usuario usuarioExistent = usuarioOptional.get();
+        return  usuarioRepository.save(usuario.builder()
+                .idUsuario(usuarioExistent.getIdUsuario()) // vai verificar se o id ja existe
+                .nome(usuario.getNome())
+                .email(usuario.getEmail())
+                .senha(usuario.getSenha())
+                .createdDate(usuarioExistent.getCreatedDate())
+                .updatedDate(LocalDateTime.now())
+                .build());
+
     }
 
 

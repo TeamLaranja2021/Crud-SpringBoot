@@ -1,5 +1,6 @@
 package br.com.laranja.springcrud.domain.service.impl;
 
+import br.com.laranja.springcrud.domain.dto.UsuarioRequest;
 import br.com.laranja.springcrud.domain.model.Usuario;
 import br.com.laranja.springcrud.domain.service.UsuarioService;
 import br.com.laranja.springcrud.infrastructure.exception.UsuarioNotFoundException;

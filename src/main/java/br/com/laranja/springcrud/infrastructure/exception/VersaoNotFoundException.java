@@ -4,7 +4,7 @@ public class VersaoNotFoundException extends  RuntimeException{
     private  Long idVersao;
 
     public VersaoNotFoundException(Long idVersao) {
-        super(String.format("Id versao do projeto %s encrotrada", idVersao));
+        super(String.format("Id versao do projeto %s encrotrado", idVersao));
         this.idVersao = idVersao ;
     }
 }

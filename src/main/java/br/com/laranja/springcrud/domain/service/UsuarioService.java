@@ -1,5 +1,6 @@
 package br.com.laranja.springcrud.domain.service;
 
+import br.com.laranja.springcrud.domain.dto.UsuarioRequest;
 import br.com.laranja.springcrud.domain.model.Usuario;
 
 import java.util.List;

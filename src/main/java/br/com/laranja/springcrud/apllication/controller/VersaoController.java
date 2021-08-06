@@ -24,7 +24,7 @@ public class VersaoController {
 
     //  get: Listar todos os projeto pelo id
     @GetMapping("/versao/{idVersao}")
-    public ResponseEntity<Versao> getByIdVersao(@PathVariable Long idVersao) {
+    public ResponseEntity<Versao> getVersaoById(@PathVariable Long idVersao) {
         return ResponseEntity.ok(versaoService.getVersaoById(idVersao));
     }
 

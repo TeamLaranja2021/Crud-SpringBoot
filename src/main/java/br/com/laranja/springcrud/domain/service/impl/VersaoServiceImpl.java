@@ -18,13 +18,9 @@ import java.util.List;
 public class VersaoServiceImpl implements VersaoService {
     private  final VersaoRepository versaoRepository;
 
-    public List<Versao> getAllVersao(VersaoRepository versaoRepository) {
-        return versaoRepository.findAll();
-    }
-
     @Override
     public List<Versao> getAllVersao() {
-        return null;
+        return versaoRepository.findAll();
     }
 
     @Override

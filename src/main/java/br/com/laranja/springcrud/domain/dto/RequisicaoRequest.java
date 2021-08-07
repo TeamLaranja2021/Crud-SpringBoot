@@ -1,32 +1,21 @@
-package br.com.laranja.springcrud.domain.model;
+package br.com.laranja.springcrud.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 
-@Entity
+
 @Data
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class Requisicao {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Builder
+public class RequisicaoRequest {
     private Long idRequisicao;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    private Evento evento;
-
     private String urlhomolog;
     private String uriprod;
     private String descricao;
     private Integer requisicaoPai;
     private String camada;
     private boolean situacao;
-
-
+    private Long idEvento;
 }

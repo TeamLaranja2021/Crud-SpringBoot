@@ -22,5 +22,5 @@ public class Propriedade {
 
     private String chave;
     private String valor;
-    private Integer ordem;
+    private Integer  ordem;
 }

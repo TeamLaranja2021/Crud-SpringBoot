@@ -7,4 +7,5 @@ public class ProjetoNotFoundException extends  RuntimeException{
         super(String.format("Id do projeto %s encontrado", idProjeto));
         this.idProjeto = idProjeto ;
     }
+
 }

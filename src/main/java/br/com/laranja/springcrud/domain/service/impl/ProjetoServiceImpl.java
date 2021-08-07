@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +35,7 @@ public class ProjetoServiceImpl implements ProjetoService {
         Projeto projeto = Projeto.builder()
                 .nome(projetoRequest.getNome())
                 .situacao(projetoRequest.isSituacao())
-                .versoes(projetoRequest.getVersoes())
+              // .versoes(projetoRequest.getVersoes())
                 .build();
         return projetoRepository.save(projeto);
     }
@@ -44,24 +43,16 @@ public class ProjetoServiceImpl implements ProjetoService {
     @Override
     public Projeto updateProjetoById(Long idProjeto, ProjetoRequest projetoRequest) {
         Optional<Projeto> projetoOptional = projetoRepository.findById(idProjeto);
-
         //verifica se tem o id no banco
         if(!projetoOptional.isPresent()){
             throw  new ProjetoNotFoundException(idProjeto);
         }
-
-       /* Optional<Versao> versaoOptional =  versaoRepository.findById(versaoRepository.get());
-        if (!versaoOptional.isPresent()) {
-            throw new versaoNotFoundException(versaoRequest.getVersaoId().toString());
-        }
-        Versao sectorExistent = versaoOptional.get();*/
-
         Projeto projetoExistent = projetoOptional.get();
         return  projetoRepository.save(Projeto.builder()
                 .idProjeto(projetoExistent.getIdProjeto()) // vai verificar se o id ja existe
                 .nome(projetoRequest.getNome())
                 .situacao(projetoRequest.isSituacao())
-                .versoes(projetoRequest.getVersoes())
+              //  .versoes(projetoRequest.getVersoes())
                 .build());
 
     }

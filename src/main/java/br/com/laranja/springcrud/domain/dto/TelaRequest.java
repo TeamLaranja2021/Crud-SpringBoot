@@ -1,26 +1,16 @@
-package br.com.laranja.springcrud.domain.model;
-
-
+package br.com.laranja.springcrud.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
-
-@Entity
 @Data
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class Tela {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTela;
-
+@Builder
+public class TelaRequest {
+    private Long idtela;
     private LocalDate dataCadastro;
     private String nomeTela;
     private String imagem;
@@ -29,7 +19,5 @@ public class Tela {
     private Integer ordem;
     private String urlLog;
     private Integer versaoOrigem;
-
-    @ManyToOne
-    private Versao versao;
+    private Long idVersao;
 }

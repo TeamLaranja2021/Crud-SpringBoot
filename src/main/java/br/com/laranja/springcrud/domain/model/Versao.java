@@ -1,5 +1,6 @@
 package br.com.laranja.springcrud.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+
 
 
 
@@ -16,24 +17,20 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Versao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVersao;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "versao")
-    private List<Tela> tela;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Projeto projeto;
-
-
     private String gmud;
     private String descricao;
     private LocalDate dataLancamento;
-    private boolean situacao;
+    private Boolean situacao;
     private Integer ordem;
     private String numeroVersao;
+
+    @ManyToOne
+    private Projeto projeto;
 
 
 }

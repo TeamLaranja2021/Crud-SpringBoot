@@ -1,6 +1,7 @@
 package br.com.laranja.springcrud.domain.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Projeto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +24,4 @@ public class Projeto {
     private String nome;
     private  boolean situacao;
 
-    @OneToMany(mappedBy = "projeto")
-    private List<Versao> versoes;
 }

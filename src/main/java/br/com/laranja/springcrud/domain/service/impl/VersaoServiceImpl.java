@@ -2,21 +2,26 @@ package br.com.laranja.springcrud.domain.service.impl;
 
 
 import br.com.laranja.springcrud.domain.dto.VersaoRequest;
+import br.com.laranja.springcrud.domain.model.Projeto;
 import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.VersaoService;
+import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.UsuarioNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundException;
+import br.com.laranja.springcrud.infrastructure.repository.ProjetoRepository;
 import br.com.laranja.springcrud.infrastructure.repository.VersaoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.beans.Transient;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 public class VersaoServiceImpl implements VersaoService {
     private  final VersaoRepository versaoRepository;
+    private  final ProjetoRepository projetoRepository;
 
     @Override
     public List<Versao> getAllVersao() {
@@ -30,22 +35,44 @@ public class VersaoServiceImpl implements VersaoService {
 
     @Override
     public Versao createVersao(VersaoRequest versaoRequest) {
-        Versao versao = Versao.builder()
-                .tela(versaoRequest.getTela())
-                .projeto(versaoRequest.getProjeto())
+        Optional<Projeto> OptionalProjeto = projetoRepository.findById(versaoRequest.getIdProjeto());
+
+        if (OptionalProjeto.isEmpty() ){
+            throw  new ProjetoNotFoundException(versaoRequest.getIdProjeto());
+        }
+
+        Versao versao1 = Versao.builder()
                 .gmud(versaoRequest.getGmud())
                 .descricao(versaoRequest.getDescricao())
                 .dataLancamento(versaoRequest.getDataLancamento())
                 .situacao(versaoRequest.getSituacao())
                 .ordem(versaoRequest.getOrdem())
                 .numeroVersao(versaoRequest.getNumeroVersao())
+                .projeto(OptionalProjeto.get())
                 .build();
-        return versaoRepository.save(versao);
+        return versaoRepository.save(versao1);
     }
 
     @Override
     public Versao updateVersaoById(Long idVersao, VersaoRequest versaoRequest) {
-        return null;
+      Optional<Versao> VersaoOptional = versaoRepository.findById(idVersao);
+
+        if (!VersaoOptional.isPresent()) {
+            throw new VersaoNotFoundException(idVersao);
+        }
+        Optional<Projeto> OptionalProjeto = projetoRepository.findById(versaoRequest.getIdProjeto());
+
+        Projeto projetoExistent = OptionalProjeto.get();
+
+      return versaoRepository.save( Versao.builder()
+                .gmud(versaoRequest.getGmud())
+                .descricao(versaoRequest.getDescricao())
+                .dataLancamento(versaoRequest.getDataLancamento())
+                .situacao(versaoRequest.getSituacao())
+                .ordem(versaoRequest.getOrdem())
+                .numeroVersao(versaoRequest.getNumeroVersao())
+                .projeto(projetoExistent)
+                .build());
     }
 
     @Override

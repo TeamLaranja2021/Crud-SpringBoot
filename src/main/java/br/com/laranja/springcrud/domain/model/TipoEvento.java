@@ -20,9 +20,6 @@ public class TipoEvento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTipoEvento;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Evento evento;
-
     private String nome;
     private boolean situacao;
 

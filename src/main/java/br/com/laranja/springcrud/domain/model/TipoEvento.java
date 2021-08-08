@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -18,9 +19,11 @@ import javax.persistence.*;
 public class TipoEvento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTipoEvento;
-
+    private Long id;
     private String nome;
-    private boolean situacao;
+    private Boolean situacao;
+
+    @OneToMany(mappedBy = "tipoEvento")
+    private List<Evento> evento;
 
 }

@@ -19,11 +19,10 @@ import java.util.List;
 public class TipoEvento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idTipoEvento;
     private String nome;
     private Boolean situacao;
 
-    @OneToMany(mappedBy = "tipoEvento")
-    private List<Evento> evento;
+
 
 }

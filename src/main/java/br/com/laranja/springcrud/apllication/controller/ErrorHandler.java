@@ -1,16 +1,17 @@
 package br.com.laranja.springcrud.apllication.controller;
 
-import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.TelaNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.UsuarioNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundException;
+
+import br.com.laranja.springcrud.infrastructure.exception.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
+@RequiredArgsConstructor
 public class ErrorHandler {
+    //private final Loger loger;
 
     @ExceptionHandler(UsuarioNotFoundException.class)
     public ResponseEntity<String> usuarioNotFound(UsuarioNotFoundException e){
@@ -19,6 +20,7 @@ public class ErrorHandler {
 
     @ExceptionHandler(ProjetoNotFoundException.class)
     public ResponseEntity<String> projetoNotFound(ProjetoNotFoundException e){
+       // loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
@@ -33,6 +35,15 @@ public class ErrorHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
+    @ExceptionHandler(RequisicaoNotFoundException.class)
+    public ResponseEntity<String> RequisicaoNotFound(RequisicaoNotFoundException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
+    @ExceptionHandler(PropriedadeNotFoundException.class)
+    public ResponseEntity<String> PropriedadeNotFound(PropriedadeNotFoundException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
 
 }
 

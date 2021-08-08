@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 
+
 @Entity
 @Data
 @Builder
@@ -25,6 +26,6 @@ public class Evento {
     private Tela tela;
     @ManyToOne
     private TipoEvento tipoEvento;
-    @OneToMany(mappedBy = "evento")
-    private List<Requisicao> requisicao;
+//    @OneToMany
+//    private List<Requisicao> requisicao;
 }

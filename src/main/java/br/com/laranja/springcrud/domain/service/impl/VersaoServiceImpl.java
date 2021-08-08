@@ -13,6 +13,7 @@ import br.com.laranja.springcrud.infrastructure.repository.VersaoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.beans.Transient;
 import java.util.List;
 import java.util.Optional;
@@ -76,7 +77,7 @@ public class VersaoServiceImpl implements VersaoService {
     }
 
     @Override
-    @Transient
+    @Transactional
     public void deleteByIdVersao(Long idVersao) {
         versaoRepository.deleteByIdVersao(idVersao);
     }

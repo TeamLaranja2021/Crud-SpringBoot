@@ -1,9 +1,6 @@
 package br.com.laranja.springcrud.apllication.controller;
 
-import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.TelaNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.UsuarioNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundException;
+import br.com.laranja.springcrud.infrastructure.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -30,6 +27,21 @@ public class ErrorHandler {
 
     @ExceptionHandler(TelaNotFoundException.class)
     public ResponseEntity<String> TelaNotFound(TelaNotFoundException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
+    @ExceptionHandler(EventoNotFoundException.class)
+    public ResponseEntity<String> EventoNotFound(EventoNotFoundException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
+    @ExceptionHandler(TipoEventoNotFoundException.class)
+    public ResponseEntity<String> TipoEventoNotFound(TipoEventoNotFoundException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
+    @ExceptionHandler(EntityWithDependentsException.class)
+    public ResponseEntity<String> EntityWithDependentsException(EntityWithDependentsException e){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 

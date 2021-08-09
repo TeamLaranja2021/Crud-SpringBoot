@@ -6,6 +6,7 @@ import br.com.laranja.springcrud.domain.dto.VersaoRequest;
 import br.com.laranja.springcrud.domain.model.Projeto;
 import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.VersaoService;
+import br.com.laranja.springcrud.infrastructure.exception.EntityWithDependentsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

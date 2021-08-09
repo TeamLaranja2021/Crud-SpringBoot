@@ -4,7 +4,7 @@ public class TelaNotFoundException extends RuntimeException{
     private  Long idTela;
 
     public TelaNotFoundException(Long idTela) {
-        super(String.format("Id da Tela nao %s encontrado", idTela));
+        super(String.format("Tela com id %s não foi encontrada", idTela));
         this.idTela = idTela ;
     }
 }

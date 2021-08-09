@@ -15,5 +15,5 @@ public interface ProjetoService {
 
     Projeto updateProjetoById(Long idProjeto, ProjetoRequest projetoRequest); // atualização dos projetos pelo id
 
-    void deleteProjeotById(Long idProjeto); // exclusão dos projetos  pelo id
+    void deleteProjetoById(Long idProjeto); // exclusão dos projetos  pelo id
 }

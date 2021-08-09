@@ -35,7 +35,6 @@ public class ProjetoServiceImpl implements ProjetoService {
         Projeto projeto = Projeto.builder()
                 .nome(projetoRequest.getNome())
                 .situacao(projetoRequest.isSituacao())
-              // .versoes(projetoRequest.getVersoes())
                 .build();
         return projetoRepository.save(projeto);
     }
@@ -52,14 +51,13 @@ public class ProjetoServiceImpl implements ProjetoService {
                 .idProjeto(projetoExistent.getIdProjeto()) // vai verificar se o id ja existe
                 .nome(projetoRequest.getNome())
                 .situacao(projetoRequest.isSituacao())
-              //  .versoes(projetoRequest.getVersoes())
                 .build());
 
     }
 
     @Transactional
     @Override
-    public void deleteProjeotById(Long idProjeto) {
+    public void deleteProjetoById(Long idProjeto) {
         projetoRepository.deleteByIdProjeto(idProjeto);
     }
 }

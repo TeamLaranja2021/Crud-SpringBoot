@@ -23,6 +23,8 @@ public class TipoEvento {
     private String nome;
     private Boolean situacao;
 
+    @OneToMany
+    private List<Evento> evento;
 
 
 }

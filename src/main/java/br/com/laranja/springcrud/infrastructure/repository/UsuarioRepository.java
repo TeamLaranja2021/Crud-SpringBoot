@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     List<Usuario> findAll();  // listar todos banco
     Optional<Usuario> findById(Long idUsuario); // achar pelo Id no banco
-    long deleteByNome(String nome); // deletar pelo id
+    void deleteById(Long idUsuario); // deletar pelo id
 
 }

@@ -24,4 +24,5 @@ public class Projeto {
     private String nome;
     private  boolean situacao;
 
+
 }

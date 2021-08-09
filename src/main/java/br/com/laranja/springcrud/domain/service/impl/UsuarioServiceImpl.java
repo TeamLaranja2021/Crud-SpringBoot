@@ -30,13 +30,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioRepository.findById(idUsuario).orElseThrow( () -> new UsuarioNotFoundException(idUsuario));
     }
 
-    @Transactional
-    @Override
-    public void deleteUserByName(String nome) {
-         usuarioRepository.deleteByNome(nome);
-    }
-
-
     //Ciar Usaurio e como regra de negocio que nao pode ter 1 usuario com o mesmo login
     @Override
     public Usuario saveUser(Usuario usuario) {
@@ -67,6 +60,18 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .updatedDate(LocalDateTime.now())
                 .build());
 
+    }
+
+    @Transactional
+    @Override
+    public void deleteUserById(Long idUsuario) throws UsuarioNotFoundException{
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(idUsuario);
+        //verifica se tem o id no banco
+        if(!usuarioOptional.isPresent()){
+            throw  new UsuarioNotFoundException(idUsuario);
+        }
+
+        usuarioRepository.deleteById(idUsuario);
     }
 
 

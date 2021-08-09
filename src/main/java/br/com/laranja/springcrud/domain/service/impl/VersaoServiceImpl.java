@@ -3,12 +3,15 @@ package br.com.laranja.springcrud.domain.service.impl;
 
 import br.com.laranja.springcrud.domain.dto.VersaoRequest;
 import br.com.laranja.springcrud.domain.model.Projeto;
+import br.com.laranja.springcrud.domain.model.Tela;
 import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.VersaoService;
+import br.com.laranja.springcrud.infrastructure.exception.EntityWithDependentsException;
 import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.UsuarioNotFoundException;
+import br.com.laranja.springcrud.infrastructure.exception.TelaNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.repository.ProjetoRepository;
+import br.com.laranja.springcrud.infrastructure.repository.TelaRepository;
 import br.com.laranja.springcrud.infrastructure.repository.VersaoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -63,6 +66,9 @@ public class VersaoServiceImpl implements VersaoService {
         }
         Optional<Projeto> OptionalProjeto = projetoRepository.findById(versaoRequest.getIdProjeto());
 
+        if (!OptionalProjeto.isPresent()) {
+            throw new ProjetoNotFoundException(versaoRequest.getIdProjeto());
+        }
         Projeto projetoExistent = OptionalProjeto.get();
 
       return versaoRepository.save( Versao.builder()

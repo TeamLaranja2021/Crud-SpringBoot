@@ -10,7 +10,7 @@ public interface UsuarioService {
 
     Usuario getUserById(Long idUsuario); // pega 1 usuario pelo id
 
-    void deleteUserByName(String nome); // deletar usuario pelo id
+    void deleteUserById(Long idUsuario); // deletar usuario pelo id
 
     Usuario saveUser(Usuario usuario); // Criar Usaurio
 

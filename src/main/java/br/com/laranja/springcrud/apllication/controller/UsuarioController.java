@@ -2,6 +2,7 @@ package br.com.laranja.springcrud.apllication.controller;
 
 import java.util.List;
 
+import br.com.laranja.springcrud.infrastructure.exception.UsuarioNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +33,9 @@ public class UsuarioController {
     }
 
     // deletar usaurio do sistema pelo  login
-   @DeleteMapping("/usuario/{nome}")
-    public  ResponseEntity deleteUserByNome(@PathVariable String nome){
-        usuarioService.deleteUserByName(nome);
+   @DeleteMapping("/usuario/{idUsuario}")
+    public  ResponseEntity deleteUserById(@PathVariable Long idUsuario) throws UsuarioNotFoundException {
+        usuarioService.deleteUserById(idUsuario);
         return  ResponseEntity.ok().build();
     }
 

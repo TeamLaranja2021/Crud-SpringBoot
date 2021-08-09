@@ -4,7 +4,7 @@ public class ProjetoNotFoundException extends  RuntimeException{
     private  Long idProjeto;
 
     public ProjetoNotFoundException(Long idProjeto) {
-        super(String.format("Id do projeto %s encontrado", idProjeto));
+        super(String.format("Projeto com id %s não foi encontrado", idProjeto));
         this.idProjeto = idProjeto ;
     }
 

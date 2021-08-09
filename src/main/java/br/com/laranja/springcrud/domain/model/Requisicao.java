@@ -18,7 +18,7 @@ public class Requisicao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRequisicao;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Evento evento;
 
     private String urlhomolog;

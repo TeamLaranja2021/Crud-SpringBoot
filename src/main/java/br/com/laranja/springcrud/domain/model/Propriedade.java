@@ -17,10 +17,12 @@ public class Propriedade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPropriedade;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Requisicao requisicao;
+
 
     private String chave;
     private String valor;
-    private Integer  ordem;
+    private Integer ordem;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Requisicao requisicao;
 }

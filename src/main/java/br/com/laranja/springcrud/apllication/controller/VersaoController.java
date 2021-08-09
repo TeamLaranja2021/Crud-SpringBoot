@@ -23,25 +23,24 @@ public class VersaoController {
         return ResponseEntity.ok(versaoService.getAllVersao());
     }
 
-    //  get: Listar todos os projeto pelo id
+
     @GetMapping("/versao/{idVersao}")
     public ResponseEntity<Versao> getVersaoById(@PathVariable Long idVersao) {
         return ResponseEntity.ok(versaoService.getVersaoById(idVersao));
     }
 
-    //  post: Criacao de colaborador
+
     @PostMapping("/versao")
     public ResponseEntity<Versao> createVersao(@RequestBody VersaoRequest versaoRequest) {
         return ResponseEntity.ok(versaoService.createVersao(versaoRequest));
     }
 
-    //  put: Atualizar colaborador pelo cpf
     @PutMapping("/versao/{idVersao}")
     public ResponseEntity<Versao> updateVersaoById(@PathVariable Long idVersao, @RequestBody VersaoRequest versaoRequest) {
         return ResponseEntity.ok(versaoService.updateVersaoById(idVersao,versaoRequest));
     }
 
-    //  delete: Deletar Collaborator pelo cpf
+
     @DeleteMapping("/versao/{idVersao}")
     public ResponseEntity deleteVersaoById(@PathVariable Long idVersao) {
         versaoService.deleteByIdVersao(idVersao);

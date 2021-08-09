@@ -26,4 +26,5 @@ public class TipoEvento {
     @OneToMany
     private List<Evento> evento;
 
+
 }

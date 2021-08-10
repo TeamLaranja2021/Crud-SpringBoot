@@ -1,5 +1,7 @@
 package br.com.laranja.springcrud.apllication.controller;
 
+
+import br.com.laranja.springcrud.domain.service.LogService;
 import br.com.laranja.springcrud.infrastructure.exception.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,7 +16,7 @@ import java.util.List;
 @RestControllerAdvice
 @RequiredArgsConstructor
 public class ErrorHandler {
-    //private final Loger loger;
+    private final LogService loger;
 
     @ExceptionHandler(UsuarioNotFoundException.class)
     public ResponseEntity<String> usuarioNotFound(UsuarioNotFoundException e){
@@ -23,7 +25,7 @@ public class ErrorHandler {
 
     @ExceptionHandler(ProjetoNotFoundException.class)
     public ResponseEntity<String> projetoNotFound(ProjetoNotFoundException e){
-       // loger.log(e);
+        loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 

@@ -3,6 +3,7 @@ package br.com.laranja.springcrud.apllication.controller;
 
 import br.com.laranja.springcrud.domain.dto.versao.VersaoForm;
 import br.com.laranja.springcrud.domain.dto.versao.VersaoRequest;
+import br.com.laranja.springcrud.domain.dto.versao.VersaoResponse;
 import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.VersaoService;
 import lombok.RequiredArgsConstructor;
@@ -18,14 +19,14 @@ public class VersaoController {
     private final VersaoService versaoService;
 
     @GetMapping("/versao")
-    public ResponseEntity<List<Versao>> getAllCollaborator() {
-        return ResponseEntity.ok(versaoService.getAllVersao());
+    public ResponseEntity<List<VersaoResponse>> getAllCollaborator() {
+        return ResponseEntity.ok(VersaoResponse.convertList(versaoService.getAllVersao()));
     }
 
 
     @GetMapping("/versao/{idVersao}")
-    public ResponseEntity<Versao> getVersaoById(@PathVariable Long idVersao) {
-        return ResponseEntity.ok(versaoService.getVersaoById(idVersao));
+    public ResponseEntity<VersaoResponse> getVersaoById(@PathVariable Long idVersao) {
+        return ResponseEntity.ok(new VersaoResponse(versaoService.getVersaoById(idVersao)));
     }
 
 

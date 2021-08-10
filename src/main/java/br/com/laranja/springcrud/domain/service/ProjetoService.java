@@ -1,6 +1,6 @@
 package br.com.laranja.springcrud.domain.service;
 
-import br.com.laranja.springcrud.domain.dto.ProjetoRequest;
+import br.com.laranja.springcrud.domain.dto.projeto.ProjetoRequest;
 import br.com.laranja.springcrud.domain.model.Projeto;
 
 import java.util.List;

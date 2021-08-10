@@ -1,12 +1,10 @@
 package br.com.laranja.springcrud.domain.service.impl;
 
 
-import br.com.laranja.springcrud.domain.dto.TelaRequest;
-import br.com.laranja.springcrud.domain.model.Projeto;
+import br.com.laranja.springcrud.domain.dto.tela.TelaRequest;
 import br.com.laranja.springcrud.domain.model.Tela;
 import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.TelaService;
-import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.TelaNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.repository.TelaRepository;

@@ -1,6 +1,6 @@
 package br.com.laranja.springcrud.domain.service;
 
-import br.com.laranja.springcrud.domain.dto.EventoRequest;
+import br.com.laranja.springcrud.domain.dto.evento.EventoRequest;
 import br.com.laranja.springcrud.domain.model.Evento;
 
 import java.util.List;

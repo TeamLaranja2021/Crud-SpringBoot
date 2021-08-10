@@ -1,10 +1,7 @@
 package br.com.laranja.springcrud.apllication.controller;
 
-import br.com.laranja.springcrud.domain.dto.EventoRequest;
-import br.com.laranja.springcrud.domain.dto.TipoEventoRequest;
-import br.com.laranja.springcrud.domain.model.Evento;
+import br.com.laranja.springcrud.domain.dto.tipoEvento.TipoEventoRequest;
 import br.com.laranja.springcrud.domain.model.TipoEvento;
-import br.com.laranja.springcrud.domain.service.EventoService;
 import br.com.laranja.springcrud.domain.service.TipoEventoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

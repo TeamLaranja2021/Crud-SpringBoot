@@ -1,6 +1,6 @@
 package br.com.laranja.springcrud.apllication.controller;
 
-import br.com.laranja.springcrud.domain.dto.EventoRequest;
+import br.com.laranja.springcrud.domain.dto.evento.EventoRequest;
 import br.com.laranja.springcrud.domain.model.Evento;
 import br.com.laranja.springcrud.domain.service.EventoService;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
 package br.com.laranja.springcrud.apllication.controller;
 
-import br.com.laranja.springcrud.domain.dto.ProjetoRequest;
+import br.com.laranja.springcrud.domain.dto.projeto.ProjetoRequest;
 import br.com.laranja.springcrud.domain.model.Projeto;
 import br.com.laranja.springcrud.domain.service.ProjetoService;
 import lombok.RequiredArgsConstructor;

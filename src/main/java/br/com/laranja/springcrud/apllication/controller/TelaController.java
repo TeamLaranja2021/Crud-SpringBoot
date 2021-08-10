@@ -1,6 +1,6 @@
 package br.com.laranja.springcrud.apllication.controller;
 
-import br.com.laranja.springcrud.domain.dto.TelaRequest;
+import br.com.laranja.springcrud.domain.dto.tela.TelaRequest;
 import br.com.laranja.springcrud.domain.model.Tela;
 import br.com.laranja.springcrud.domain.service.TelaService;
 import lombok.RequiredArgsConstructor;

@@ -1,15 +1,15 @@
-package br.com.laranja.springcrud.domain.dto;
-
+package br.com.laranja.springcrud.domain.dto.projeto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+
 @Data
 @AllArgsConstructor
 @Builder
-public class TipoEventoRequest {
-    private Long idTipoEvento;
+public class ProjetoRequest {
+    private Long idProjeto;
     private String nome;
     private boolean situacao;
 

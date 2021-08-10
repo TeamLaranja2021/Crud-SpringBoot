@@ -1,7 +1,7 @@
 package br.com.laranja.springcrud.domain.service.impl;
 
 
-import br.com.laranja.springcrud.domain.dto.EventoRequest;
+import br.com.laranja.springcrud.domain.dto.evento.EventoRequest;
 import br.com.laranja.springcrud.domain.model.Evento;
 import br.com.laranja.springcrud.domain.model.Tela;
 import br.com.laranja.springcrud.domain.model.TipoEvento;
@@ -9,7 +9,6 @@ import br.com.laranja.springcrud.domain.service.EventoService;
 import br.com.laranja.springcrud.infrastructure.exception.EventoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.TelaNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.TipoEventoNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.repository.EventoRepository;
 import br.com.laranja.springcrud.infrastructure.repository.TelaRepository;
 

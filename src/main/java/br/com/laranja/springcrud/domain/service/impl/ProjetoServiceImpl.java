@@ -1,12 +1,9 @@
 package br.com.laranja.springcrud.domain.service.impl;
 
-import br.com.laranja.springcrud.domain.dto.ProjetoRequest;
+import br.com.laranja.springcrud.domain.dto.projeto.ProjetoRequest;
 import br.com.laranja.springcrud.domain.model.Projeto;
-import br.com.laranja.springcrud.domain.model.Usuario;
-import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.ProjetoService;
 import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.UsuarioNotFoundException;
 import br.com.laranja.springcrud.infrastructure.repository.ProjetoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

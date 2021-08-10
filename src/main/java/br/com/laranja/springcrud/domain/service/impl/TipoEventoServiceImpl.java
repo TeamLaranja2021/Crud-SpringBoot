@@ -1,21 +1,16 @@
 package br.com.laranja.springcrud.domain.service.impl;
 
 
-import br.com.laranja.springcrud.domain.dto.TipoEventoRequest;
-import br.com.laranja.springcrud.domain.model.Projeto;
+import br.com.laranja.springcrud.domain.dto.tipoEvento.TipoEventoRequest;
 import br.com.laranja.springcrud.domain.model.TipoEvento;
-import br.com.laranja.springcrud.domain.model.Usuario;
 import br.com.laranja.springcrud.domain.service.TipoEventoService;
 import br.com.laranja.springcrud.infrastructure.exception.EventoNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.TipoEventoNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.repository.TipoEventoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 

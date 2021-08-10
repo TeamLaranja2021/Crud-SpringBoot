@@ -1,23 +1,18 @@
 package br.com.laranja.springcrud.domain.service.impl;
 
 
-import br.com.laranja.springcrud.domain.dto.VersaoRequest;
+import br.com.laranja.springcrud.domain.dto.versao.VersaoRequest;
 import br.com.laranja.springcrud.domain.model.Projeto;
-import br.com.laranja.springcrud.domain.model.Tela;
 import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.VersaoService;
-import br.com.laranja.springcrud.infrastructure.exception.EntityWithDependentsException;
 import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
-import br.com.laranja.springcrud.infrastructure.exception.TelaNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.repository.ProjetoRepository;
-import br.com.laranja.springcrud.infrastructure.repository.TelaRepository;
 import br.com.laranja.springcrud.infrastructure.repository.VersaoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.beans.Transient;
 import java.util.List;
 import java.util.Optional;
 

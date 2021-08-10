@@ -1,6 +1,6 @@
 package br.com.laranja.springcrud.domain.service.impl;
 
-import br.com.laranja.springcrud.domain.dto.RequisicaoRequest;
+import br.com.laranja.springcrud.domain.dto.requiscao.RequisicaoRequest;
 import br.com.laranja.springcrud.domain.model.Evento;
 import br.com.laranja.springcrud.domain.model.Requisicao;
 import br.com.laranja.springcrud.domain.service.RequisicaoService;

@@ -6,6 +6,7 @@ import br.com.laranja.springcrud.domain.dto.versao.VersaoForm;
 import br.com.laranja.springcrud.domain.model.Projeto;
 import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.VersaoService;
+import br.com.laranja.springcrud.infrastructure.exception.EntityWithDependentsException;
 import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.repository.ProjetoRepository;
@@ -67,7 +68,9 @@ public class VersaoServiceImpl implements VersaoService {
         }
         Projeto projetoExistent = OptionalProjeto.get();
 
+
       return versaoRepository.save( Versao.builder()
+                .idVersao(VersaoOptional.get().getIdVersao())
                 .gmud(versaoRequest.getGmud())
                 .descricao(versaoRequest.getDescricao())
                 .dataLancamento(versaoRequest.getDataLancamento())
@@ -80,7 +83,13 @@ public class VersaoServiceImpl implements VersaoService {
 
     @Override
     @Transactional
-    public void deleteByIdVersao(Long idVersao) {
+    public void deleteByIdVersao(Long idVersao) throws EntityWithDependentsException, VersaoNotFoundException {
+        Versao versao = this.getVersaoById(idVersao);
+        Optional<Projeto> OptionalProjeto = projetoRepository.findById(versao.getProjeto().getIdProjeto());
+
+        if (OptionalProjeto.isPresent()) {
+            throw new EntityWithDependentsException("Versão","projeto");
+        }
         versaoRepository.deleteByIdVersao(idVersao);
     }
 }

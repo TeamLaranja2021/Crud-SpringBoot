@@ -34,7 +34,5 @@ public class VersaoForm {
     private String numeroVersao;
     @NotNull
     private Long idProjeto;
-    @NotNull
-    private Long idTela;
 
 }

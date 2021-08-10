@@ -2,6 +2,7 @@ package br.com.laranja.springcrud.domain.service.impl;
 
 
 import br.com.laranja.springcrud.domain.dto.versao.VersaoRequest;
+import br.com.laranja.springcrud.domain.dto.versao.VersaoForm;
 import br.com.laranja.springcrud.domain.model.Projeto;
 import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.VersaoService;
@@ -33,23 +34,23 @@ public class VersaoServiceImpl implements VersaoService {
     }
 
     @Override
-    public Versao createVersao(VersaoRequest versaoRequest) {
-        Optional<Projeto> OptionalProjeto = projetoRepository.findById(versaoRequest.getIdProjeto());
+    public Versao createVersao(VersaoForm versaoform) {
+        Optional<Projeto> OptionalProjeto = projetoRepository.findById(versaoform.getIdProjeto());
 
         if (OptionalProjeto.isEmpty() ){
-            throw  new ProjetoNotFoundException(versaoRequest.getIdProjeto());
+            throw  new ProjetoNotFoundException(versaoform.getIdProjeto());
         }
 
-        Versao versao1 = Versao.builder()
-                .gmud(versaoRequest.getGmud())
-                .descricao(versaoRequest.getDescricao())
-                .dataLancamento(versaoRequest.getDataLancamento())
-                .situacao(versaoRequest.getSituacao())
-                .ordem(versaoRequest.getOrdem())
-                .numeroVersao(versaoRequest.getNumeroVersao())
+        Versao versao = Versao.builder()
+                .gmud(versaoform.getGmud())
+                .descricao(versaoform.getDescricao())
+                .dataLancamento(versaoform.getDataLancamento())
+                .situacao(versaoform.getSituacao())
+                .ordem(versaoform.getOrdem())
+                .numeroVersao(versaoform.getNumeroVersao())
                 .projeto(OptionalProjeto.get())
                 .build();
-        return versaoRepository.save(versao1);
+        return versaoRepository.save(versao);
     }
 
     @Override

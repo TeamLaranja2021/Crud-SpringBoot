@@ -9,7 +9,7 @@ public class EntityWithDependentsException extends RuntimeException {
     private String entidade;
     private String vinculo;
 
-    public EntityWithDependentsException(String entidade, String vinculo, String message) {
+    public EntityWithDependentsException(String entidade, String vinculo) {
         super(String.format("%s não pode ser excluido(a) pois já possui %s vinculado(a).", entidade, vinculo));
         this.entidade = entidade;
         this.vinculo = vinculo;

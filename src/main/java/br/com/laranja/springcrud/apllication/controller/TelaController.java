@@ -1,6 +1,8 @@
 package br.com.laranja.springcrud.apllication.controller;
 
 import br.com.laranja.springcrud.domain.dto.tela.TelaRequest;
+import br.com.laranja.springcrud.domain.dto.tela.TelaResponse;
+import br.com.laranja.springcrud.domain.dto.tipoEvento.TipoEventoResponse;
 import br.com.laranja.springcrud.domain.model.Tela;
 import br.com.laranja.springcrud.domain.service.TelaService;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +18,8 @@ public class TelaController {
     private final TelaService telaService;
 
     @GetMapping("/tela")
-    public ResponseEntity<List<Tela>> getAllTela() {
-        return ResponseEntity.ok(telaService.getAllTelas());
+    public ResponseEntity<List<TelaResponse>> getAllTela() {
+        return ResponseEntity.ok(TelaResponse.convertList(telaService.getAllTelas()));
     }
 
 

@@ -1,6 +1,8 @@
 package br.com.laranja.springcrud.apllication.controller;
 
 import br.com.laranja.springcrud.domain.dto.evento.EventoRequest;
+import br.com.laranja.springcrud.domain.dto.evento.EventoResponse;
+import br.com.laranja.springcrud.domain.dto.versao.VersaoResponse;
 import br.com.laranja.springcrud.domain.model.Evento;
 import br.com.laranja.springcrud.domain.service.EventoService;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +18,8 @@ public class EventoController {
 
     //  get: Listar todos os eventos
     @GetMapping("/evento")
-    public ResponseEntity<List<Evento>> getAllEvento() {
-        return ResponseEntity.ok(eventoService.getAllEventos());
+    public ResponseEntity<List<EventoResponse>> getAllEvento() {
+        return ResponseEntity.ok(EventoResponse.convertList(eventoService.getAllEventos()));
     }
 
     //  get: Listar evento por id

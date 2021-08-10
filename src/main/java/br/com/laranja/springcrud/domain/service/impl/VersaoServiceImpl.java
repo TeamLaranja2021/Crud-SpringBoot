@@ -84,8 +84,11 @@ public class VersaoServiceImpl implements VersaoService {
     @Override
     @Transactional
     public void deleteByIdVersao(Long idVersao) throws EntityWithDependentsException, VersaoNotFoundException {
-        Versao versao = this.getVersaoById(idVersao);
-        Optional<Projeto> OptionalProjeto = projetoRepository.findById(versao.getProjeto().getIdProjeto());
+        Optional<Versao> versao = Optional.ofNullable(this.getVersaoById(idVersao));
+        if (!versao.isPresent()){
+            throw new VersaoNotFoundException(idVersao);
+        }
+        Optional<Projeto> OptionalProjeto = projetoRepository.findById(versao.get().getProjeto().getIdProjeto());
 
         if (OptionalProjeto.isPresent()) {
             throw new EntityWithDependentsException("Versão","projeto");

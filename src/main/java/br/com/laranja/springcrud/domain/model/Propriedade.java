@@ -20,9 +20,9 @@ public class Propriedade {
 
 
     private String chave;
-    private String valor;
+    private Integer valor;
     private Integer ordem;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Requisicao requisicao;
 }

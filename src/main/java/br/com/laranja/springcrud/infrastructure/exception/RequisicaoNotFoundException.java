@@ -4,7 +4,7 @@ public class RequisicaoNotFoundException extends RuntimeException{
     private  Long idRequisicao;
 
     public RequisicaoNotFoundException(Long idRequisicao) {
-        super(String.format("Id do Requisicao %s encontrado", idRequisicao));
+        super(String.format("Requisição com id %s não foi encontrada", idRequisicao));
         this.idRequisicao = idRequisicao ;
     }
 }

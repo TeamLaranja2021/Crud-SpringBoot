@@ -10,7 +10,7 @@ import lombok.Data;
 public class PropriedadeRequest {
     private Long idPropriedade;
     private String chave;
-    private String valor;
+    private Integer valor;
     private Integer  ordem;
     private Long idRequisicao;
 }

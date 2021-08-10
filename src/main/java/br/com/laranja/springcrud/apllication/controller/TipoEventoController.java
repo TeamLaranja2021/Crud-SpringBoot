@@ -1,6 +1,8 @@
 package br.com.laranja.springcrud.apllication.controller;
 
+import br.com.laranja.springcrud.domain.dto.requiscao.RequisicaoResponse;
 import br.com.laranja.springcrud.domain.dto.tipoEvento.TipoEventoRequest;
+import br.com.laranja.springcrud.domain.dto.tipoEvento.TipoEventoResponse;
 import br.com.laranja.springcrud.domain.model.TipoEvento;
 import br.com.laranja.springcrud.domain.service.TipoEventoService;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +17,8 @@ public class TipoEventoController {
     private final TipoEventoService tipoeventoService;
 
     @GetMapping("/tipoevento")
-    public ResponseEntity<List<TipoEvento>> getAllTipoEvento() {
-        return ResponseEntity.ok(tipoeventoService.getAllTipoEventos());
+    public ResponseEntity<List<TipoEventoResponse>> getAllTipoEvento() {
+        return ResponseEntity.ok(TipoEventoResponse.convertList(tipoeventoService.getAllTipoEventos()));
     }
 
     //  get: Listar todos os tipos de eventos

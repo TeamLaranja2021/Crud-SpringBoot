@@ -1,7 +1,9 @@
 package br.com.laranja.springcrud.apllication.controller;
 
 
+import br.com.laranja.springcrud.domain.dto.evento.EventoResponse;
 import br.com.laranja.springcrud.domain.dto.propriedade.PropriedadeRequest;
+import br.com.laranja.springcrud.domain.dto.propriedade.PropriedadeResponse;
 import br.com.laranja.springcrud.domain.model.Propriedade;
 import br.com.laranja.springcrud.domain.service.PropriedadeService;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +20,8 @@ public class PropriedadeController {
 
 
     @GetMapping("/propriedade")
-    public ResponseEntity<List<Propriedade>> getAllPropriedades() {
-        return ResponseEntity.ok(propriedadeService.getAllPropriedades());
+    public ResponseEntity<List<PropriedadeResponse>> getAllPropriedades() {
+        return ResponseEntity.ok(PropriedadeResponse.convertList(propriedadeService.getAllPropriedades()));
     }
 
 

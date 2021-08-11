@@ -3,9 +3,11 @@ package br.com.laranja.springcrud.domain.service.impl;
 
 import br.com.laranja.springcrud.domain.dto.tipoEvento.TipoEventoRequest;
 import br.com.laranja.springcrud.domain.model.TipoEvento;
+import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.TipoEventoService;
 import br.com.laranja.springcrud.infrastructure.exception.EventoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.TipoEventoNotFoundException;
+import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.repository.TipoEventoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -59,6 +61,10 @@ public class TipoEventoServiceImpl implements TipoEventoService {
     @Transactional
     @Override
     public void deleteTipoEventoById(Long id) {
+        Optional<TipoEvento> tipoevento = Optional.ofNullable(this.getTipoEventoById(id));
+        if (!tipoevento.isPresent()){
+            throw new TipoEventoNotFoundException(id);
+        }
         tipoeventoRepository.deleteByIdTipoEvento(id);
     }
 }

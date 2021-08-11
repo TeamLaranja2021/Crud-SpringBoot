@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 
 @Entity
@@ -30,8 +29,6 @@ public class Versao {
 
     @ManyToOne
     private Projeto projeto;
-    @OneToMany(mappedBy = "versao")
-    private List<Tela> telas;
 
 
 }

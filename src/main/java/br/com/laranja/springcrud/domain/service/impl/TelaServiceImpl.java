@@ -2,6 +2,7 @@ package br.com.laranja.springcrud.domain.service.impl;
 
 
 import br.com.laranja.springcrud.domain.dto.tela.TelaRequest;
+import br.com.laranja.springcrud.domain.model.Evento;
 import br.com.laranja.springcrud.domain.model.Projeto;
 import br.com.laranja.springcrud.domain.model.Tela;
 import br.com.laranja.springcrud.domain.model.Versao;
@@ -88,6 +89,11 @@ public class TelaServiceImpl implements TelaService {
 
     @Transactional
     @Override
-    public void deleteTelaById(Long idTela) {telaRepository.deleteByIdTela(idTela);
+    public void deleteTelaById(Long idTela) {
+        Optional<Tela> tela = Optional.ofNullable(this.getTelaById(idTela));
+        if (!tela.isPresent()){
+            throw new TelaNotFoundException(idTela);
+        }
+        telaRepository.deleteByIdTela(idTela);
     }
 }

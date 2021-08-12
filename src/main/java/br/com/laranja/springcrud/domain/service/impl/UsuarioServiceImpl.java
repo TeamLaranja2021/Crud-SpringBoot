@@ -71,6 +71,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw  new UsuarioNotFoundException(idUsuario);
         }
 
+
         usuarioRepository.deleteById(idUsuario);
     }
 

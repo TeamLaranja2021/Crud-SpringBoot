@@ -70,6 +70,10 @@ public class PropriedadeServiceImpl implements PropriedadeService {
     @Transactional
     @Override
     public void deletePropriedadeById(Long idPropriedade) {
+        Optional<Propriedade> propriedade = Optional.ofNullable(this.getPropriedadeById(idPropriedade));
+        if (!propriedade.isPresent()) {
+            throw new PropriedadeNotFoundException(idPropriedade);
+        }
         propriedadeRepository.deleteByIdPropriedade(idPropriedade);
     }
 

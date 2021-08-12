@@ -24,8 +24,7 @@ public class EventoServiceImpl implements EventoService {
     private final TipoEventoRepository tipoEventoRepository;
 
     @Override
-    public List<Evento> getAllEventos() {
-        return eventoRepository.findAll();
+    public List<Evento> getAllEventos() {return eventoRepository.findAll();
     }
 
     @Override

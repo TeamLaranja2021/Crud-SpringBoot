@@ -2,6 +2,7 @@ package br.com.laranja.springcrud.domain.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +24,8 @@ public class TipoEvento {
     private String nome;
     private Boolean situacao;
 
-    @OneToMany
+    @OneToMany(mappedBy = "tipoEvento")
+    @JsonIgnore
     private List<Evento> evento;
 
 

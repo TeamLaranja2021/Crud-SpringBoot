@@ -20,6 +20,7 @@ public class ErrorHandler {
 
     @ExceptionHandler(UsuarioNotFoundException.class)
     public ResponseEntity<String> usuarioNotFound(UsuarioNotFoundException e){
+        loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
@@ -32,41 +33,49 @@ public class ErrorHandler {
 
     @ExceptionHandler(VersaoNotFoundException.class)
     public ResponseEntity<String> versaoNotFound(VersaoNotFoundException e){
+        loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
     @ExceptionHandler(TelaNotFoundException.class)
     public ResponseEntity<String> TelaNotFound(TelaNotFoundException e){
+        loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
     @ExceptionHandler(EventoNotFoundException.class)
     public ResponseEntity<String> EventoNotFound(EventoNotFoundException e){
+        loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
     @ExceptionHandler(TipoEventoNotFoundException.class)
     public ResponseEntity<String> TipoEventoNotFound(TipoEventoNotFoundException e){
+        loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
     @ExceptionHandler(EntityWithDependentsException.class)
     public ResponseEntity<String> EntityWithDependentsException(EntityWithDependentsException e){
+        loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
     @ExceptionHandler(RequisicaoNotFoundException.class)
     public ResponseEntity<String> RequisicaoNotFound(RequisicaoNotFoundException e){
+        loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
     @ExceptionHandler(PropriedadeNotFoundException.class)
     public ResponseEntity<String> PropriedadeNotFound(PropriedadeNotFoundException e){
+        loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<List<FieldError>> FieldNotFound(MethodArgumentNotValidException e){
+        loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getFieldErrors());
     }
 }

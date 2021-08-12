@@ -13,4 +13,5 @@ public interface EventoRepository extends JpaRepository<Evento, Long> {
     Optional<Evento> findById(Long idEvento); // achar pelo Id no banco
 
     long deleteByIdEvento(Long idEvento); // deletar pelo id
+
 }

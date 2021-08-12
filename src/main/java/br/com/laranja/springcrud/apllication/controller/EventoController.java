@@ -19,13 +19,15 @@ public class EventoController {
     //  get: Listar todos os eventos
     @GetMapping("/evento")
     public ResponseEntity<List<EventoResponse>> getAllEvento() {
-        return ResponseEntity.ok(EventoResponse.convertList(eventoService.getAllEventos()));
+        List<EventoResponse> eventoResponse = EventoResponse.convertList(eventoService.getAllEventos());
+        return ResponseEntity.ok(eventoResponse);
     }
 
     //  get: Listar evento por id
     @GetMapping("/evento/{idEvento}")
-    public ResponseEntity<Evento> getEventoById(@PathVariable Long idEvento) {
-        return ResponseEntity.ok(eventoService.getEventoById(idEvento));
+    public ResponseEntity<EventoResponse> getEventoById(@PathVariable Long idEvento) {
+        EventoResponse eventoResponse = new EventoResponse(eventoService.getEventoById(idEvento));
+        return ResponseEntity.ok(eventoResponse);
     }
 
     //  post: Criacao de evento

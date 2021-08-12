@@ -2,8 +2,10 @@ package br.com.laranja.springcrud.domain.service.impl;
 
 import br.com.laranja.springcrud.domain.dto.projeto.ProjetoRequest;
 import br.com.laranja.springcrud.domain.model.Projeto;
+import br.com.laranja.springcrud.domain.model.Propriedade;
 import br.com.laranja.springcrud.domain.service.ProjetoService;
 import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
+import br.com.laranja.springcrud.infrastructure.exception.PropriedadeNotFoundException;
 import br.com.laranja.springcrud.infrastructure.repository.ProjetoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -55,6 +57,10 @@ public class ProjetoServiceImpl implements ProjetoService {
     @Transactional
     @Override
     public void deleteProjetoById(Long idProjeto) {
+        Optional<Projeto> projeto = Optional.ofNullable(this.getProjetoById(idProjeto));
+        if (!projeto.isPresent()) {
+            throw new ProjetoNotFoundException(idProjeto);
+        }
         projetoRepository.deleteByIdProjeto(idProjeto);
     }
 }

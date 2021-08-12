@@ -2,12 +2,17 @@ package br.com.laranja.springcrud.domain.service.impl;
 
 
 import br.com.laranja.springcrud.domain.dto.tipoEvento.TipoEventoRequest;
+import br.com.laranja.springcrud.domain.dto.tipoEvento.TipoEventoResponse;
+import br.com.laranja.springcrud.domain.model.Evento;
+import br.com.laranja.springcrud.domain.model.Projeto;
 import br.com.laranja.springcrud.domain.model.TipoEvento;
 import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.TipoEventoService;
+import br.com.laranja.springcrud.infrastructure.exception.EntityWithDependentsException;
 import br.com.laranja.springcrud.infrastructure.exception.EventoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.TipoEventoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundException;
+import br.com.laranja.springcrud.infrastructure.repository.EventoRepository;
 import br.com.laranja.springcrud.infrastructure.repository.TipoEventoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +25,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TipoEventoServiceImpl implements TipoEventoService {
     private final TipoEventoRepository tipoeventoRepository;
+    private final EventoRepository eventoRepository;
 
     @Override
     public List<TipoEvento> getAllTipoEventos() {
@@ -60,11 +66,12 @@ public class TipoEventoServiceImpl implements TipoEventoService {
 
     @Transactional
     @Override
-    public void deleteTipoEventoById(Long id) {
-        Optional<TipoEvento> tipoevento = Optional.ofNullable(this.getTipoEventoById(id));
-        if (!tipoevento.isPresent()){
+    public void deleteTipoEventoById(Long id) throws RuntimeException {
+        Optional<TipoEvento> tipoEventoOptional = Optional.ofNullable(this.getTipoEventoById(id));
+        if (!tipoEventoOptional.isPresent()){
             throw new TipoEventoNotFoundException(id);
         }
+
         tipoeventoRepository.deleteByIdTipoEvento(id);
     }
 }

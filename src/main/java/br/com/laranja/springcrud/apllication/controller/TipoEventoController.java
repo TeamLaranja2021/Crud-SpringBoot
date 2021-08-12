@@ -23,8 +23,9 @@ public class TipoEventoController {
 
     //  get: Listar todos os tipos de eventos
     @GetMapping("/tipoevento/{idTipoEvento}")
-    public ResponseEntity<TipoEvento> getTipoEventoById(@PathVariable Long idTipoEvento) {
-        return ResponseEntity.ok(tipoeventoService.getTipoEventoById(idTipoEvento));
+    public ResponseEntity<TipoEventoResponse> getTipoEventoById(@PathVariable Long idTipoEvento) {
+        TipoEventoResponse tipoEventoResponse = new TipoEventoResponse(tipoeventoService.getTipoEventoById(idTipoEvento));
+        return ResponseEntity.ok(tipoEventoResponse);
     }
 
     //  post: Criacao de tipo de evento

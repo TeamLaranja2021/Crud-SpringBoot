@@ -15,6 +15,8 @@ import br.com.laranja.springcrud.infrastructure.exception.VersaoNotFoundExceptio
 import br.com.laranja.springcrud.infrastructure.repository.EventoRepository;
 import br.com.laranja.springcrud.infrastructure.repository.TipoEventoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -28,16 +30,19 @@ public class TipoEventoServiceImpl implements TipoEventoService {
     private final EventoRepository eventoRepository;
 
     @Override
+    @Cacheable(value = "tipoEvento")
     public List<TipoEvento> getAllTipoEventos() {
         return tipoeventoRepository.findAll();
     }
 
     @Override
+    @CacheEvict(value = "tipoEvento", allEntries = true)
     public TipoEvento getTipoEventoById(Long idTipoEvento) {
         return tipoeventoRepository.findById(idTipoEvento).orElseThrow(() -> new EventoNotFoundException(idTipoEvento));
     }
 
     @Override
+    @CacheEvict(value = "tipoEvento", allEntries = true)
     public TipoEvento createTipoEvento(TipoEventoRequest tipoEventoRequest) {
         TipoEvento tipoevento = TipoEvento.builder()
                 .situacao(tipoEventoRequest.isSituacao())
@@ -48,6 +53,7 @@ public class TipoEventoServiceImpl implements TipoEventoService {
     }
 
     @Override
+    @CacheEvict(value = "tipoEvento", allEntries = true)
     public TipoEvento updateTipoEventoById(Long idTipoEvento, TipoEventoRequest tipoEventoRequest) {
         Optional<TipoEvento> TipoEventoOpcional = tipoeventoRepository.findById(idTipoEvento);
 
@@ -66,6 +72,7 @@ public class TipoEventoServiceImpl implements TipoEventoService {
 
     @Transactional
     @Override
+    @CacheEvict(value = "tipoEvento", allEntries = true)
     public void deleteTipoEventoById(Long id) throws RuntimeException {
         Optional<TipoEvento> tipoEventoOptional = Optional.ofNullable(this.getTipoEventoById(id));
         if (!tipoEventoOptional.isPresent()){

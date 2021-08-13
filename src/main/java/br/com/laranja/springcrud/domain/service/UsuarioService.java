@@ -1,6 +1,7 @@
 package br.com.laranja.springcrud.domain.service;
 
-import br.com.laranja.springcrud.domain.dto.UsuarioRequest;
+import br.com.laranja.springcrud.domain.dto.usuario.UsuarioForm;
+import br.com.laranja.springcrud.domain.dto.usuario.UsuarioRequest;
 import br.com.laranja.springcrud.domain.model.Usuario;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface UsuarioService {
 
     Usuario saveUser(Usuario usuario); // Criar Usaurio
 
-    Usuario updateUserById(Long idUsuario ,Usuario usuario); // atualizar os dados dos usuario
+  //  Usuario updateUserById(Long idUsuario , UsuarioRequest usuarioRequest); // atualizar os dados dos usuario
 }

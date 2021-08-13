@@ -1,6 +1,5 @@
 package br.com.laranja.springcrud.domain.model;
 
-import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;

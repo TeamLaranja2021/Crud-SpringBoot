@@ -1,6 +1,8 @@
 package br.com.laranja.springcrud.apllication.controller;
 
-import br.com.laranja.springcrud.domain.dto.ProjetoRequest;
+import br.com.laranja.springcrud.domain.dto.projeto.ProjetoRequest;
+import br.com.laranja.springcrud.domain.dto.projeto.ProjetoResponse;
+import br.com.laranja.springcrud.domain.dto.propriedade.PropriedadeResponse;
 import br.com.laranja.springcrud.domain.model.Projeto;
 import br.com.laranja.springcrud.domain.service.ProjetoService;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +20,8 @@ public class ProjetoController {
 
 
     @GetMapping("/projeto")
-    public ResponseEntity<List<Projeto>> getAllCollaborator() {
-        return ResponseEntity.ok(projetoService.getAllProjetos());
+    public ResponseEntity<List<ProjetoResponse>> getAllCollaborator() {
+        return ResponseEntity.ok(ProjetoResponse.convertList(projetoService.getAllProjetos()));
     }
 
 

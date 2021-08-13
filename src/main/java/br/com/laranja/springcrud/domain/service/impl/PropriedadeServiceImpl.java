@@ -1,6 +1,6 @@
 package br.com.laranja.springcrud.domain.service.impl;
 
-import br.com.laranja.springcrud.domain.dto.PropriedadeRequest;
+import br.com.laranja.springcrud.domain.dto.propriedade.PropriedadeRequest;
 import br.com.laranja.springcrud.domain.model.Propriedade;
 import br.com.laranja.springcrud.domain.model.Requisicao;
 import br.com.laranja.springcrud.domain.service.PropriedadeService;
@@ -9,6 +9,8 @@ import br.com.laranja.springcrud.infrastructure.exception.RequisicaoNotFoundExce
 import br.com.laranja.springcrud.infrastructure.repository.PropriedadeRepository;
 import br.com.laranja.springcrud.infrastructure.repository.RequisicaoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -22,16 +24,19 @@ public class PropriedadeServiceImpl implements PropriedadeService {
     private final RequisicaoRepository requisicaoRepository;
 
     @Override
+    @Cacheable(value = "propriedade")
     public List<Propriedade> getAllPropriedades() {
         return propriedadeRepository.findAll();
     }
 
     @Override
+    @CacheEvict(value = "propriedade", allEntries = true)
     public Propriedade getPropriedadeById(Long idPropriedade) {
         return propriedadeRepository.findById(idPropriedade).orElseThrow( () -> new PropriedadeNotFoundException(idPropriedade));
     }
 
     @Override
+    @CacheEvict(value = "propriedade", allEntries = true)
     public Propriedade createPropriedade(PropriedadeRequest propriedadeRequest) {
         Optional<Requisicao> Optionalpropriedade = requisicaoRepository.findById(propriedadeRequest.getIdRequisicao());
 
@@ -49,6 +54,7 @@ public class PropriedadeServiceImpl implements PropriedadeService {
     }
 
     @Override
+    @CacheEvict(value = "propriedade", allEntries = true)
     public Propriedade updatePropriedadeId(Long idPropriedade, PropriedadeRequest propriedadeRequest) {
         Optional<Propriedade> PropriedadeOptional = propriedadeRepository.findById(idPropriedade);
 
@@ -69,7 +75,12 @@ public class PropriedadeServiceImpl implements PropriedadeService {
 
     @Transactional
     @Override
+    @CacheEvict(value = "propriedade", allEntries = true)
     public void deletePropriedadeById(Long idPropriedade) {
+        Optional<Propriedade> propriedade = Optional.ofNullable(this.getPropriedadeById(idPropriedade));
+        if (!propriedade.isPresent()) {
+            throw new PropriedadeNotFoundException(idPropriedade);
+        }
         propriedadeRepository.deleteByIdPropriedade(idPropriedade);
     }
 

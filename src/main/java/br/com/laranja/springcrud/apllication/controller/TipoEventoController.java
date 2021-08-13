@@ -1,10 +1,9 @@
 package br.com.laranja.springcrud.apllication.controller;
 
-import br.com.laranja.springcrud.domain.dto.EventoRequest;
-import br.com.laranja.springcrud.domain.dto.TipoEventoRequest;
-import br.com.laranja.springcrud.domain.model.Evento;
+import br.com.laranja.springcrud.domain.dto.requiscao.RequisicaoResponse;
+import br.com.laranja.springcrud.domain.dto.tipoEvento.TipoEventoRequest;
+import br.com.laranja.springcrud.domain.dto.tipoEvento.TipoEventoResponse;
 import br.com.laranja.springcrud.domain.model.TipoEvento;
-import br.com.laranja.springcrud.domain.service.EventoService;
 import br.com.laranja.springcrud.domain.service.TipoEventoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,14 +17,15 @@ public class TipoEventoController {
     private final TipoEventoService tipoeventoService;
 
     @GetMapping("/tipoevento")
-    public ResponseEntity<List<TipoEvento>> getAllTipoEvento() {
-        return ResponseEntity.ok(tipoeventoService.getAllTipoEventos());
+    public ResponseEntity<List<TipoEventoResponse>> getAllTipoEvento() {
+        return ResponseEntity.ok(TipoEventoResponse.convertList(tipoeventoService.getAllTipoEventos()));
     }
 
     //  get: Listar todos os tipos de eventos
     @GetMapping("/tipoevento/{idTipoEvento}")
-    public ResponseEntity<TipoEvento> getTipoEventoById(@PathVariable Long idTipoEvento) {
-        return ResponseEntity.ok(tipoeventoService.getTipoEventoById(idTipoEvento));
+    public ResponseEntity<TipoEventoResponse> getTipoEventoById(@PathVariable Long idTipoEvento) {
+        TipoEventoResponse tipoEventoResponse = new TipoEventoResponse(tipoeventoService.getTipoEventoById(idTipoEvento));
+        return ResponseEntity.ok(tipoEventoResponse);
     }
 
     //  post: Criacao de tipo de evento

@@ -1,4 +1,4 @@
-package br.com.laranja.springcrud.domain.dto;
+package br.com.laranja.springcrud.domain.dto.tela;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

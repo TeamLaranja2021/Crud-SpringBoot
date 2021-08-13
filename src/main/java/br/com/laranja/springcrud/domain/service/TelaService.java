@@ -1,5 +1,5 @@
 package br.com.laranja.springcrud.domain.service;
-import br.com.laranja.springcrud.domain.dto.TelaRequest;
+import br.com.laranja.springcrud.domain.dto.tela.TelaRequest;
 import br.com.laranja.springcrud.domain.model.Tela;
 
 

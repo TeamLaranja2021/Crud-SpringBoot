@@ -1,6 +1,5 @@
 package br.com.laranja.springcrud.infrastructure.repository;
 
-import br.com.laranja.springcrud.domain.dto.UsuarioRequest;
 import br.com.laranja.springcrud.domain.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

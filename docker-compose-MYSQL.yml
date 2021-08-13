@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  mysqlsrv:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "root"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ${PWD}/mysql:/var/lib/mysql
+    networks:
+      - mysql-compose-network
+
+  adminer:
+    image: adminer
+    container_name: sistemaDocumentacao_adminer
+    restart: always
+    ports:
+      - 8081:8080
+    networks:
+      - backend
+networks:
+  mysql-compose-network:
+    driver: bridge

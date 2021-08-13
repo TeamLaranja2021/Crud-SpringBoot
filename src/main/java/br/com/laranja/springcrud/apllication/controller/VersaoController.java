@@ -1,16 +1,16 @@
 package br.com.laranja.springcrud.apllication.controller;
 
 
-import br.com.laranja.springcrud.domain.dto.ProjetoRequest;
-import br.com.laranja.springcrud.domain.dto.VersaoRequest;
-import br.com.laranja.springcrud.domain.model.Projeto;
+import br.com.laranja.springcrud.domain.dto.versao.VersaoForm;
+import br.com.laranja.springcrud.domain.dto.versao.VersaoRequest;
+import br.com.laranja.springcrud.domain.dto.versao.VersaoResponse;
 import br.com.laranja.springcrud.domain.model.Versao;
 import br.com.laranja.springcrud.domain.service.VersaoService;
-import br.com.laranja.springcrud.infrastructure.exception.EntityWithDependentsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,20 +19,20 @@ public class VersaoController {
     private final VersaoService versaoService;
 
     @GetMapping("/versao")
-    public ResponseEntity<List<Versao>> getAllCollaborator() {
-        return ResponseEntity.ok(versaoService.getAllVersao());
+    public ResponseEntity<List<VersaoResponse>> getAllCollaborator() {
+        return ResponseEntity.ok(VersaoResponse.convertList(versaoService.getAllVersao()));
     }
 
 
     @GetMapping("/versao/{idVersao}")
-    public ResponseEntity<Versao> getVersaoById(@PathVariable Long idVersao) {
-        return ResponseEntity.ok(versaoService.getVersaoById(idVersao));
+    public ResponseEntity<VersaoResponse> getVersaoById(@PathVariable Long idVersao) {
+        return ResponseEntity.ok(new VersaoResponse(versaoService.getVersaoById(idVersao)));
     }
 
 
     @PostMapping("/versao")
-    public ResponseEntity<Versao> createVersao(@RequestBody VersaoRequest versaoRequest) {
-        return ResponseEntity.ok(versaoService.createVersao(versaoRequest));
+    public ResponseEntity<Versao> createVersao(@Valid @RequestBody VersaoForm versaoform) {
+        return ResponseEntity.ok(versaoService.createVersao(versaoform));
     }
 
     @PutMapping("/versao/{idVersao}")

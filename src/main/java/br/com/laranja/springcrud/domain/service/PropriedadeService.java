@@ -1,6 +1,6 @@
 package br.com.laranja.springcrud.domain.service;
 
-import br.com.laranja.springcrud.domain.dto.PropriedadeRequest;
+import br.com.laranja.springcrud.domain.dto.propriedade.PropriedadeRequest;
 import br.com.laranja.springcrud.domain.model.Propriedade;
 
 import java.util.List;

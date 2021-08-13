@@ -1,6 +1,7 @@
 package br.com.laranja.springcrud.apllication.controller;
 
-import br.com.laranja.springcrud.domain.dto.RequisicaoRequest;
+import br.com.laranja.springcrud.domain.dto.requiscao.RequisicaoRequest;
+import br.com.laranja.springcrud.domain.dto.requiscao.RequisicaoResponse;
 import br.com.laranja.springcrud.domain.model.Requisicao;
 import br.com.laranja.springcrud.domain.service.RequisicaoService;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,8 @@ public class RequisicaoController {
 
 
     @GetMapping("/requisicao")
-    public ResponseEntity<List<Requisicao>> getAllRequisicao(){
-        return  ResponseEntity.ok(requisicaoService.getAllRequisicao());
+    public ResponseEntity<List<RequisicaoResponse>> getAllRequisicao(){
+        return  ResponseEntity.ok(RequisicaoResponse.convertList(requisicaoService.getAllRequisicao()));
     }
 
     @GetMapping("/requisicao/{idRequisicao}")

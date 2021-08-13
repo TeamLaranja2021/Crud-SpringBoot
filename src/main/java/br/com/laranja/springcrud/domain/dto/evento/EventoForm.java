@@ -1,19 +1,27 @@
-package br.com.laranja.springcrud.domain.dto;
+package br.com.laranja.springcrud.domain.dto.evento;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 @AllArgsConstructor
 @Builder
-public class EventoRequest{
+public class EventoForm {
     private Long idEvento;
-    private boolean situacao;
-    private Integer ordem;
-    private String parametros;
-    private Long tipoEvento;
-    private Long tela;
-    private Long requisicao;
 
+    @NotNull
+    private boolean situacao;
+    @NotNull
+    private Integer ordem;
+    @NotNull
+    private String parametros;
+    @NotNull
+    private Long tipoEvento;
+    @NotNull
+    private Long tela;
+    @NotNull
+    private Long requisicao;
 }

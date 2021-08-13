@@ -1,6 +1,7 @@
 package br.com.laranja.springcrud.domain.service.impl;
 
-import br.com.laranja.springcrud.domain.dto.UsuarioRequest;
+import br.com.laranja.springcrud.domain.dto.usuario.UsuarioForm;
+import br.com.laranja.springcrud.domain.dto.usuario.UsuarioRequest;
 import br.com.laranja.springcrud.domain.model.Usuario;
 import br.com.laranja.springcrud.domain.service.UsuarioService;
 import br.com.laranja.springcrud.infrastructure.exception.UsuarioNotFoundException;
@@ -41,8 +42,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 
     //AtuAlizar Usuario
-    @Override
-    public Usuario updateUserById(Long idUsuario, Usuario usuario) {
+ /*   @Override
+    public Usuario updateUserById(Long idUsuario, UsuarioRequest usuarioRequest) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(idUsuario);
 
         //verifica se tem o id no banco
@@ -51,16 +52,15 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
 
         Usuario usuarioExistent = usuarioOptional.get();
-        return  usuarioRepository.save(usuario.builder()
+        return  usuarioRepository.save(usuarioRequest.builder()
                 .idUsuario(usuarioExistent.getIdUsuario()) // vai verificar se o id ja existe
-                .nome(usuario.getNome())
-                .email(usuario.getEmail())
-                .senha(usuario.getSenha())
+                .nome(usuarioRequest.getNome())
+                .email(usuarioRequest.getEmail())
                 .createdDate(usuarioExistent.getCreatedDate())
                 .updatedDate(LocalDateTime.now())
                 .build());
 
-    }
+    }*/
 
     @Transactional
     @Override
@@ -70,6 +70,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         if(!usuarioOptional.isPresent()){
             throw  new UsuarioNotFoundException(idUsuario);
         }
+
 
         usuarioRepository.deleteById(idUsuario);
     }

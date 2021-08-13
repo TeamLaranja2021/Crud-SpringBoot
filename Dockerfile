@@ -5,7 +5,7 @@ COPY ${APP_NAME} /app/springcrud/
 
 EXPOSE 8081
 
-ENTRYPOINT ["java", "-jar" , "/app/springcrud/${APP_NAME}"]
+ENTRYPOINT ["java", "-jar" , "/app/springcrud/springcrud.jar"]
 
 
 

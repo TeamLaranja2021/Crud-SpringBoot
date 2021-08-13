@@ -2,6 +2,7 @@ package br.com.laranja.springcrud.apllication.controller;
 
 
 import br.com.laranja.springcrud.domain.dto.erro.ErroDeFormularioDto;
+import br.com.laranja.springcrud.domain.model.Loger;
 import br.com.laranja.springcrud.domain.service.LogService;
 import br.com.laranja.springcrud.infrastructure.exception.*;
 import lombok.RequiredArgsConstructor;

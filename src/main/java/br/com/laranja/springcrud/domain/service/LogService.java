@@ -14,7 +14,7 @@ public class LogService {
     @Autowired
     private LogRepository logRepository;
 
-    public void log(Exception e){
+     public void log(Exception e){
         Loger log = Loger.builder()
                 .messagem(e.getMessage())
                 .data(LocalDateTime.now())

@@ -2,12 +2,15 @@ package br.com.laranja.springcrud.domain.service.impl;
 
 import br.com.laranja.springcrud.domain.dto.usuario.UsuarioForm;
 import br.com.laranja.springcrud.domain.dto.usuario.UsuarioRequest;
+import br.com.laranja.springcrud.domain.external.client.JwtClient;
 import br.com.laranja.springcrud.domain.model.Usuario;
 import br.com.laranja.springcrud.domain.service.UsuarioService;
 import br.com.laranja.springcrud.infrastructure.exception.UsuarioNotFoundException;
 import br.com.laranja.springcrud.infrastructure.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -19,6 +22,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UsuarioServiceImpl implements UsuarioService {
     private  final UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private JwtClient jwtClient;
 
     // pega todos os usuarios do sistema
     @Override
@@ -71,9 +77,12 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw  new UsuarioNotFoundException(idUsuario);
         }
 
-
         usuarioRepository.deleteById(idUsuario);
     }
-
+    @Override
+    public void getToken(UsuarioRequest usuarioRequest){
+        jwtClient.token(usuarioRequest);
+        System.out.println(jwtClient.token(usuarioRequest));
+    }
 
 }

@@ -15,5 +15,7 @@ public interface UsuarioService {
 
     Usuario saveUser(Usuario usuario); // Criar Usaurio
 
+    void getToken(UsuarioRequest usuarioRequest);
+
   //  Usuario updateUserById(Long idUsuario , UsuarioRequest usuarioRequest); // atualizar os dados dos usuario
 }

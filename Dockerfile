@@ -3,7 +3,7 @@ ENV APP_NAME=springcrud.jar
 
 COPY ${APP_NAME} /app/springcrud/
 
-EXPOSE 8081
+EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar" , "/app/springcrud/springcrud.jar"]
 

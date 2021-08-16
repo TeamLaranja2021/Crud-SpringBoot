@@ -20,12 +20,12 @@ public class UsuarioResponse {
 
 
     public UsuarioResponse(Usuario usuario) {
-        this.idUsuario = usuario.getIdUsuario();
+        this.idUsuario = usuario.getId();
         this.nome = usuario.getNome();
         this.email = usuario.getEmail();
     }
 
-    public static List<UsuarioResponse> convertList(List<Usuario> Ususario) {
-        return Ususario.stream().map(UsuarioResponse::new).collect(Collectors.toList());
+    public static List<UsuarioResponse> convertList(List<Usuario> Usuario) {
+        return Usuario.stream().map(UsuarioResponse::new).collect(Collectors.toList());
     }
 }

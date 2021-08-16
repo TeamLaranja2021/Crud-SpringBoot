@@ -2,14 +2,18 @@ package br.com.laranja.springcrud.domain.service;
 
 import br.com.laranja.springcrud.domain.dto.projeto.ProjetoRequest;
 import br.com.laranja.springcrud.domain.model.Projeto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface ProjetoService {
 
-    List<Projeto> getAllProjetos();
+    Page<Projeto> getAllProjetos(Pageable paginacao);
 
     Projeto getProjetoById(Long idProjeto); // listagem de um projetos pelo id
+
+    Projeto getProjetoByNome(String nomeProjeto, Pageable paginacao); // listagem de um projetos pelo id
 
     Projeto createProjeto(ProjetoRequest projetoRequest); // criação dos projetos
 

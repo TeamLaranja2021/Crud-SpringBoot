@@ -9,9 +9,9 @@ import java.util.List;
 public interface UsuarioService {
     List<Usuario> getAllUsers(); // todos os usuarios
 
-    Usuario getUserById(Long idUsuario); // pega 1 usuario pelo id
+    Usuario getUserById(Long id); // pega 1 usuario pelo id
 
-    void deleteUserById(Long idUsuario); // deletar usuario pelo id
+    void deleteUserById(Long id); // deletar usuario pelo id
 
     Usuario saveUser(Usuario usuario); // Criar Usaurio
 

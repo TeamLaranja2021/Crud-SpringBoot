@@ -11,16 +11,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Builder
-@JsonIgnoreProperties(ignoreUnknown = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Long id;
     private String nome;
     private String email;
     private String senha;

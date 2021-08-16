@@ -29,14 +29,14 @@ public class UsuarioController {
 
     // pega 1 usuario com o errorHandler
     @GetMapping("/usuario/{idUsuario}")
-    public ResponseEntity<UsuarioResponse> getUserById(@PathVariable Long idUsuario){
-        return  ResponseEntity.ok(new UsuarioResponse(usuarioService.getUserById(idUsuario)));
+    public ResponseEntity<UsuarioResponse> getUserById(@PathVariable Long id){
+        return  ResponseEntity.ok(new UsuarioResponse(usuarioService.getUserById(id)));
     }
 
     // deletar usaurio do sistema pelo  login
    @DeleteMapping("/usuario/{idUsuario}")
-    public  ResponseEntity deleteUserById(@PathVariable Long idUsuario) throws UsuarioNotFoundException {
-        usuarioService.deleteUserById(idUsuario);
+    public  ResponseEntity deleteUserById(@PathVariable Long id) throws UsuarioNotFoundException {
+        usuarioService.deleteUserById(id);
         return  ResponseEntity.ok().build();
     }
 

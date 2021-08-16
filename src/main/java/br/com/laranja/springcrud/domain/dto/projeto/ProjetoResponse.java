@@ -7,6 +7,7 @@ import br.com.laranja.springcrud.domain.model.Projeto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,5 +28,9 @@ public class ProjetoResponse {
     }
     public static List<ProjetoResponse> convertList(List<Projeto> Projeto) {
         return Projeto.stream().map(ProjetoResponse::new).collect(Collectors.toList());
+    }
+
+    public static Page<ProjetoResponse> converter(Page<Projeto> projetos) {
+        return projetos.map(ProjetoResponse::new);
     }
 }

@@ -7,6 +7,10 @@ import br.com.laranja.springcrud.domain.model.Projeto;
 import br.com.laranja.springcrud.domain.service.ProjetoService;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,19 +21,18 @@ import java.util.List;
 public class ProjetoController {
     private final ProjetoService projetoService;
 
-
-
     @GetMapping("/projeto")
-    public ResponseEntity<List<ProjetoResponse>> getAllCollaborator() {
-        return ResponseEntity.ok(ProjetoResponse.convertList(projetoService.getAllProjetos()));
+    public ResponseEntity<Page<ProjetoResponse>> getAllCollaborator(@PageableDefault(sort = "idProjeto", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable paginacao) {
+        return ResponseEntity.ok(ProjetoResponse.converter(projetoService.getAllProjetos(paginacao)));
     }
 
+    @GetMapping("/projeto/{nomeProjeto}")
+    public Page<ProjetoResponse> getProjetoByNome(@RequestParam(required = false) String nomeProjeto,
+                                                  @PageableDefault(sort = "idProjeto", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable paginacao) {
+        Page<Projeto> projetos = (Page<Projeto>) projetoService.getProjetoByNome(nomeProjeto, paginacao);
+        return ProjetoResponse.converter(projetos);
 
-    @GetMapping("/projeto/{idProjeto}")
-    public ResponseEntity<Projeto> getProjetoById(@PathVariable Long idProjeto) {
-        return ResponseEntity.ok(projetoService.getProjetoById(idProjeto));
     }
-
 
     @PostMapping("/projeto")
     public ResponseEntity<Projeto> createProjeto(@RequestBody ProjetoRequest projetoRequest) {

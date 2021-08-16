@@ -33,8 +33,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario getUserById(Long idUsuario) {
-        return usuarioRepository.findById(idUsuario).orElseThrow( () -> new UsuarioNotFoundException(idUsuario));
+    public Usuario getUserById(Long id) {
+        return usuarioRepository.findById(id).orElseThrow( () -> new UsuarioNotFoundException(id));
     }
 
     //Ciar Usaurio e como regra de negocio que nao pode ter 1 usuario com o mesmo login
@@ -70,19 +70,18 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Transactional
     @Override
-    public void deleteUserById(Long idUsuario) throws UsuarioNotFoundException{
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(idUsuario);
+    public void deleteUserById(Long id) throws UsuarioNotFoundException{
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
         //verifica se tem o id no banco
         if(!usuarioOptional.isPresent()){
-            throw  new UsuarioNotFoundException(idUsuario);
+            throw  new UsuarioNotFoundException(id);
         }
 
-        usuarioRepository.deleteById(idUsuario);
+        usuarioRepository.deleteById(id);
     }
     @Override
     public void getToken(UsuarioRequest usuarioRequest){
         jwtClient.token(usuarioRequest);
-        System.out.println(jwtClient.token(usuarioRequest));
     }
 
 }

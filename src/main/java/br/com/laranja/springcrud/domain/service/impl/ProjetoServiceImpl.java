@@ -8,6 +8,8 @@ import br.com.laranja.springcrud.infrastructure.repository.ProjetoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -22,8 +24,8 @@ public class ProjetoServiceImpl implements ProjetoService {
 
     @Override
     @Cacheable(value = "projetos")
-    public List<Projeto> getAllProjetos() {
-        return projetoRepository.findAll();
+    public Page<Projeto> getAllProjetos(Pageable paginacao) {
+        return projetoRepository.findAll(paginacao);
     }
 
     @Override
@@ -31,6 +33,13 @@ public class ProjetoServiceImpl implements ProjetoService {
     public Projeto getProjetoById(Long idProjeto) {
         return projetoRepository.findById(idProjeto).orElseThrow( () -> new ProjetoNotFoundException(idProjeto));
     }
+
+    @Override
+    public Projeto getProjetoByNome(String nomeProjeto, Pageable paginacao) {
+         Page<Projeto> projetos = projetoRepository.findByNome(nomeProjeto, paginacao);
+        return (Projeto) projetos;
+    }
+
 
     @Override
     @CacheEvict(value = "projetos", allEntries = true)

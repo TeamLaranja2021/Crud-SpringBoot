@@ -3,6 +3,7 @@ package br.com.laranja.springcrud.domain.service.impl;
 import br.com.laranja.springcrud.domain.dto.projeto.ProjetoRequest;
 import br.com.laranja.springcrud.domain.model.Projeto;
 import br.com.laranja.springcrud.domain.service.ProjetoService;
+import br.com.laranja.springcrud.infrastructure.exception.ProjetoNameNotFoundException;
 import br.com.laranja.springcrud.infrastructure.exception.ProjetoNotFoundException;
 import br.com.laranja.springcrud.infrastructure.repository.ProjetoRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,9 +35,9 @@ public class ProjetoServiceImpl implements ProjetoService {
     }
 
     @Override
-    public Projeto getProjetoByNome(String nomeProjeto, Pageable paginacao) {
-         Page<Projeto> projetos = projetoRepository.findByNome(nomeProjeto, paginacao);
-        return (Projeto) projetos;
+    @CacheEvict(value = "projetos", allEntries = true)
+    public Projeto getProjetoByNome(String nome) {
+        return projetoRepository.findByNome(nome).orElseThrow( () -> new ProjetoNameNotFoundException(nome));
     }
 
 

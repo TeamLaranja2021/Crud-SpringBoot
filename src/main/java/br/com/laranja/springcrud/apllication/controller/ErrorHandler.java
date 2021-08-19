@@ -78,6 +78,11 @@ public class ErrorHandler {
         loger.log(e);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
+    @ExceptionHandler(ProjetoNameNotFoundException.class)
+    public ResponseEntity<String> ProjetoNameNotFoundException(ProjetoNameNotFoundException e){
+        loger.log(e);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<List<ErroDeFormularioDto>> FieldNotFound(MethodArgumentNotValidException exception){

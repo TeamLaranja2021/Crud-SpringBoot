@@ -5,7 +5,7 @@ import br.com.laranja.springcrud.domain.model.Projeto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
+import java.util.Optional;
 
 public interface ProjetoService {
 
@@ -13,7 +13,7 @@ public interface ProjetoService {
 
     Projeto getProjetoById(Long idProjeto); // listagem de um projetos pelo id
 
-    Projeto getProjetoByNome(String nomeProjeto, Pageable paginacao); // listagem de um projetos pelo id
+    Projeto getProjetoByNome(String nome); // listagem de um projetos pelo nome
 
     Projeto createProjeto(ProjetoRequest projetoRequest); // criação dos projetos
 

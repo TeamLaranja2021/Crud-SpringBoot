@@ -15,4 +15,6 @@ public interface RequisicaoRepository extends JpaRepository<Requisicao, Long> {
     Optional<Requisicao> findById(Long idRequisicao);
 
     long deleteByIdRequisicao(Long idRequisicao);
+
+    List<Requisicao> getAllByEvent_Id(Long idEvento);
 }

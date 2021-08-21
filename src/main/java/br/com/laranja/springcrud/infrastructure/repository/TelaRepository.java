@@ -13,4 +13,6 @@ public interface TelaRepository extends JpaRepository<Tela, Long> {
     List<Tela> findAll();  // listar todos banco
     Optional<Tela> findById(Long idTela); // achar pelo Id no banco
     long deleteByIdTela(Long idTela); // deletar pelo id
+
+    List<Tela> findByVersao_Id(Long idVersao);
 }

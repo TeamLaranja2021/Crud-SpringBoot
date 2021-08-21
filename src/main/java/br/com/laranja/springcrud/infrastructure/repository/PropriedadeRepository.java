@@ -15,4 +15,6 @@ public interface PropriedadeRepository extends JpaRepository<Propriedade, Long> 
     Optional<Propriedade> findById(Long idPropriedade);
 
     long deleteByIdPropriedade(Long idPropriedade);
+
+    List<Propriedade> findAllByRequest_Id(Long idRequisicao);
 }
